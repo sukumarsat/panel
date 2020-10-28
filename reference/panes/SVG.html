@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta charset="utf-8"/>
+<title>Svg — Panel 0.10.1 documentation</title>
+<meta content="High-level dashboarding for python visualization libraries" name="description"/>
+<meta content="Panel contributors" name="author"/>
+<!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+<script>
+    WebFont.load({
+      google: {
+        families: ['Source Sans Pro']
+      }
+    });
+  </script>
+<!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="../../_static/css/main.css" rel="stylesheet"/>
+<link href="../../_static/nbsite.css" rel="stylesheet"/>
+<link href="../../_static/site.css" rel="stylesheet"/>
+<!-- Scripts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script src="../../_static/js/main.js"></script>
+<!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="../../_static/favicon.ico" rel="icon" type="image/png"/>
+<!-- Canonical
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="https://panel.holoviz.org/reference/panes/SVG.html" rel="canonical">
+</link></head>
+<body class="">
+<header class="navigation">
+<div class="wrapper">
+<a class="logo" href="../../index.html">
+<img alt="Logo" src="../../_static/logo_horizontal.png"/>
+</a>
+<a class="navigation-menu-button" href="javascript:void(0)" id="js-mobile-menu">Menu</a>
+<nav>
+<ul class="navigation-menu show" id="js-navigation-menu">
+<li class="nav-link doc-head"><a href="//discourse.holoviz.org">Discourse</a></li>
+<li class="nav-link doc-head"><a href="//twitter.com/Panel_org">Twitter</a></li>
+<li class="nav-link doc-head"><a href="//github.com/pyviz/panel">Github</a></li>
+<li class="nav-link">
+<div style="display:inline-block;vertical-align: middle;">
+<div class="search-bar">
+<form action="../../search.html" method="get" role="search">
+<input name="q" placeholder="Search" type="search"/>
+<button type="submit">
+<img alt="Search Icon" src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/search-icon-black.png"/>
+</button>
+</form>
+</div>
+</div>
+</li>
+</ul>
+</nav>
+</div>
+</header>
+<div class="second-nav">
+<nav>
+<ul class="navigation-menu show">
+<li class="nav-link doc-head"><a href="../../getting_started/index.html">Getting started</a></li>
+<li class="nav-link doc-head"><a href="../../user_guide/index.html">User Guide</a></li>
+<li class="nav-link doc-head"><a href="../../gallery/index.html">Gallery</a></li>
+<li class="nav-link doc-head"><a href="../index.html">Reference Gallery</a></li>
+<li class="nav-link doc-head"><a href="../../developer_guide/index.html">Developer Guide</a></li>
+<li class="nav-link doc-head"><a href="../../releases.html">Releases</a></li>
+<li class="nav-link doc-head"><a href="../../api/index.html">API</a></li>
+<li class="nav-link doc-head"><a href="../../FAQ.html">FAQ</a></li>
+<li class="nav-link doc-head"><a href="../../about.html">About</a></li>
+</ul>
+</nav>
+</div>
+<!-- MAIN BODY OF DOCS –––––––––––––––––– -->
+<div class="docs section">
+<div id="hacketyhackhack"> <!-- style="width:20%;margin-right: 100px;"> --> <!--style="display: none;"> style="display:none;"> -->
+<div class="toc" style="width:15%; margin-right:20px;">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user_guide/index.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gallery/index.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Reference Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/index.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Comparisons.html">Comparisons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../releases.html">Releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Roadmap.html">Road Map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../FAQ.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/pyviz/panel">Github source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../about.html">About</a></li>
+</ul>
+</div>
+</div>
+<div class="content"> <!-- style="max-width:80%;margin-left:auto;margin-right: auto;">-->
+<div class="section" id="svg">
+<span id="panes-gallery-svg"></span><h1>Svg<a class="headerlink" href="#svg" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://raw.githubusercontent.com/pyviz/panel/master/examples/reference/panes/SVG.ipynb">Download this notebook from GitHub (right-click to download).</a></p>
+<hr class="docutils"/>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [1]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">panel</span> <span class="k">as</span> <span class="nn">pn</span>
+
+<span class="n">pn</span><span class="o">.</span><span class="n">extension</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div id="57ef3fbd-eaad-4847-8d35-1d108137d45e"></div>
+<div class="output_subarea output_javascript">
+<script type="text/javascript">
+var element = $('#57ef3fbd-eaad-4847-8d35-1d108137d45e');
+
+(function(root) {
+  function now() {
+    return new Date();
+  }
+
+  var force = true;
+
+  if (typeof root._bokeh_onload_callbacks === "undefined" || force === true) {
+    root._bokeh_onload_callbacks = [];
+    root._bokeh_is_loading = undefined;
+  }
+
+  if (typeof (root._bokeh_timeout) === "undefined" || force === true) {
+    root._bokeh_timeout = Date.now() + 5000;
+    root._bokeh_failed_load = false;
+  }
+
+  function run_callbacks() {
+    try {
+      root._bokeh_onload_callbacks.forEach(function(callback) {
+        if (callback != null)
+          callback();
+      });
+    } finally {
+      delete root._bokeh_onload_callbacks
+    }
+    console.debug("Bokeh: all callbacks have finished");
+  }
+
+  function load_libs(css_urls, js_urls, callback) {
+    if (css_urls == null) css_urls = [];
+    if (js_urls == null) js_urls = [];
+
+    root._bokeh_onload_callbacks.push(callback);
+    if (root._bokeh_is_loading > 0) {
+      console.debug("Bokeh: BokehJS is being loaded, scheduling callback at", now());
+      return null;
+    }
+    if (js_urls == null || js_urls.length === 0) {
+      run_callbacks();
+      return null;
+    }
+    console.debug("Bokeh: BokehJS not loaded, scheduling load and callback at", now());
+    root._bokeh_is_loading = css_urls.length + js_urls.length;
+
+    function on_load() {
+      root._bokeh_is_loading--;
+      if (root._bokeh_is_loading === 0) {
+        console.debug("Bokeh: all BokehJS libraries/stylesheets loaded");
+        run_callbacks()
+      }
+    }
+
+    function on_error() {
+      console.error("failed to load " + url);
+    }
+
+    for (var i = 0; i < css_urls.length; i++) {
+      var url = css_urls[i];
+      const element = document.createElement("link");
+      element.onload = on_load;
+      element.onerror = on_error;
+      element.rel = "stylesheet";
+      element.type = "text/css";
+      element.href = url;
+      console.debug("Bokeh: injecting link tag for BokehJS stylesheet: ", url);
+      document.body.appendChild(element);
+    }
+
+    var skip = [];
+    if (window.requirejs) {
+      require([], function() {
+      })
+    }
+    for (var i = 0; i < js_urls.length; i++) {
+      var url = js_urls[i];
+      if (skip.indexOf(url) >= 0) { on_load(); continue; }
+      var element = document.createElement('script');
+      element.onload = on_load;
+      element.onerror = on_error;
+      element.async = false;
+      element.src = url;
+      console.debug("Bokeh: injecting script tag for BokehJS library: ", url);
+      document.head.appendChild(element);
+    }
+	if (!js_urls.length) {
+      on_load()
+    }
+  };
+
+  function inject_raw_css(css) {
+    const element = document.createElement("style");
+    element.appendChild(document.createTextNode(css));
+    document.body.appendChild(element);
+  }
+
+  var js_urls = ["https://cdn.bokeh.org/bokeh/release/bokeh-2.2.3.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.2.3.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.2.3.min.js", "https://unpkg.com/@holoviz/panel@^0.10.1/dist/panel.min.js"];
+  var css_urls = ["https://unpkg.com/@holoviz/panel@0.10.1/dist/css/widgets.css", "https://unpkg.com/@holoviz/panel@0.10.1/dist/css/card.css", "https://unpkg.com/@holoviz/panel@0.10.1/dist/css/dataframe.css", "https://unpkg.com/@holoviz/panel@0.10.1/dist/css/alerts.css", "https://unpkg.com/@holoviz/panel@0.10.1/dist/css/markdown.css", "https://unpkg.com/@holoviz/panel@0.10.1/dist/css/json.css"];
+
+  var inline_js = [
+    function(Bokeh) {
+      Bokeh.set_log_level("info");
+    },
+    function(Bokeh) {} // ensure no trailing comma for IE
+  ];
+
+  function run_inline_js() {
+    if ((root.Bokeh !== undefined) || (force === true)) {
+      for (var i = 0; i < inline_js.length; i++) {
+        inline_js[i].call(root, root.Bokeh);
+      }} else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(run_inline_js, 100);
+    } else if (!root._bokeh_failed_load) {
+      console.log("Bokeh: BokehJS failed to load within specified timeout.");
+      root._bokeh_failed_load = true;
+    }
+  }
+
+  if (root._bokeh_is_loading === 0) {
+    console.debug("Bokeh: BokehJS loaded, going straight to plotting");
+    run_inline_js();
+  } else {
+    load_libs(css_urls, js_urls, function() {
+      console.debug("Bokeh: BokehJS plotting callback run at", now());
+      run_inline_js();
+    });
+  }
+}(window));
+</script>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div id="fae03cb4-6e87-48cf-8293-9d68e484cf9f"></div>
+<div class="output_subarea output_javascript">
+<script type="text/javascript">
+var element = $('#fae03cb4-6e87-48cf-8293-9d68e484cf9f');
+
+if ((window.PyViz === undefined) || (window.PyViz instanceof HTMLElement)) {
+  window.PyViz = {comms: {}, comm_status:{}, kernels:{}, receivers: {}, plot_index: []}
+}
+
+
+    function JupyterCommManager() {
+    }
+
+    JupyterCommManager.prototype.register_target = function(plot_id, comm_id, msg_handler) {
+      if (window.comm_manager || ((window.Jupyter !== undefined) && (Jupyter.notebook.kernel != null))) {
+        var comm_manager = window.comm_manager || Jupyter.notebook.kernel.comm_manager;
+        comm_manager.register_target(comm_id, function(comm) {
+          comm.on_msg(msg_handler);
+        });
+      } else if ((plot_id in window.PyViz.kernels) && (window.PyViz.kernels[plot_id])) {
+        window.PyViz.kernels[plot_id].registerCommTarget(comm_id, function(comm) {
+          comm.onMsg = msg_handler;
+        });
+      } else if (typeof google != 'undefined' && google.colab.kernel != null) {
+        google.colab.kernel.comms.registerTarget(comm_id, (comm) => {
+          var messages = comm.messages[Symbol.asyncIterator]();
+          function processIteratorResult(result) {
+            var message = result.value;
+            console.log(message)
+            var content = {data: message.data, comm_id};
+            var buffers = []
+            for (var buffer of message.buffers || []) {
+              buffers.push(new DataView(buffer))
+            }
+            var metadata = message.metadata || {};
+            var msg = {content, buffers, metadata}
+            msg_handler(msg);
+            return messages.next().then(processIteratorResult);
+          }
+          return messages.next().then(processIteratorResult);
+        })
+      }
+    }
+
+    JupyterCommManager.prototype.get_client_comm = function(plot_id, comm_id, msg_handler) {
+      if (comm_id in window.PyViz.comms) {
+        return window.PyViz.comms[comm_id];
+      } else if (window.comm_manager || ((window.Jupyter !== undefined) && (Jupyter.notebook.kernel != null))) {
+        var comm_manager = window.comm_manager || Jupyter.notebook.kernel.comm_manager;
+        var comm = comm_manager.new_comm(comm_id, {}, {}, {}, comm_id);
+        if (msg_handler) {
+          comm.on_msg(msg_handler);
+        }
+      } else if ((plot_id in window.PyViz.kernels) && (window.PyViz.kernels[plot_id])) {
+        var comm = window.PyViz.kernels[plot_id].connectToComm(comm_id);
+        comm.open();
+        if (msg_handler) {
+          comm.onMsg = msg_handler;
+        }
+      } else if (typeof google != 'undefined' && google.colab.kernel != null) {
+        var comm_promise = google.colab.kernel.comms.open(comm_id)
+        comm_promise.then((comm) => {
+          window.PyViz.comms[comm_id] = comm;
+          if (msg_handler) {
+            var messages = comm.messages[Symbol.asyncIterator]();
+            function processIteratorResult(result) {
+              var message = result.value;
+              var content = {data: message.data};
+              var metadata = message.metadata || {comm_id};
+              var msg = {content, metadata}
+              msg_handler(msg);
+              return messages.next().then(processIteratorResult);
+            }
+            return messages.next().then(processIteratorResult);
+          }
+        }) 
+        var sendClosure = (data, metadata, buffers, disposeOnDone) => {
+          return comm_promise.then((comm) => {
+            comm.send(data, metadata, buffers, disposeOnDone);
+          });
+        };
+        var comm = {
+          send: sendClosure
+        };
+      }
+      window.PyViz.comms[comm_id] = comm;
+      return comm;
+    }
+    window.PyViz.comm_manager = new JupyterCommManager();
+    
+
+
+var JS_MIME_TYPE = 'application/javascript';
+var HTML_MIME_TYPE = 'text/html';
+var EXEC_MIME_TYPE = 'application/vnd.holoviews_exec.v0+json';
+var CLASS_NAME = 'output';
+
+/**
+ * Render data to the DOM node
+ */
+function render(props, node) {
+  var div = document.createElement("div");
+  var script = document.createElement("script");
+  node.appendChild(div);
+  node.appendChild(script);
+}
+
+/**
+ * Handle when a new output is added
+ */
+function handle_add_output(event, handle) {
+  var output_area = handle.output_area;
+  var output = handle.output;
+  if ((output.data == undefined) || (!output.data.hasOwnProperty(EXEC_MIME_TYPE))) {
+    return
+  }
+  var id = output.metadata[EXEC_MIME_TYPE]["id"];
+  var toinsert = output_area.element.find("." + CLASS_NAME.split(' ')[0]);
+  if (id !== undefined) {
+    var nchildren = toinsert.length;
+    var html_node = toinsert[nchildren-1].children[0];
+    html_node.innerHTML = output.data[HTML_MIME_TYPE];
+    var scripts = [];
+    var nodelist = html_node.querySelectorAll("script");
+    for (var i in nodelist) {
+      if (nodelist.hasOwnProperty(i)) {
+        scripts.push(nodelist[i])
+      }
+    }
+
+    scripts.forEach( function (oldScript) {
+      var newScript = document.createElement("script");
+      var attrs = [];
+      var nodemap = oldScript.attributes;
+      for (var j in nodemap) {
+        if (nodemap.hasOwnProperty(j)) {
+          attrs.push(nodemap[j])
+        }
+      }
+      attrs.forEach(function(attr) { newScript.setAttribute(attr.name, attr.value) });
+      newScript.appendChild(document.createTextNode(oldScript.innerHTML));
+      oldScript.parentNode.replaceChild(newScript, oldScript);
+    });
+    if (JS_MIME_TYPE in output.data) {
+      toinsert[nchildren-1].children[1].textContent = output.data[JS_MIME_TYPE];
+    }
+    output_area._hv_plot_id = id;
+    if ((window.Bokeh !== undefined) && (id in Bokeh.index)) {
+      window.PyViz.plot_index[id] = Bokeh.index[id];
+    } else {
+      window.PyViz.plot_index[id] = null;
+    }
+  } else if (output.metadata[EXEC_MIME_TYPE]["server_id"] !== undefined) {
+    var bk_div = document.createElement("div");
+    bk_div.innerHTML = output.data[HTML_MIME_TYPE];
+    var script_attrs = bk_div.children[0].attributes;
+    for (var i = 0; i < script_attrs.length; i++) {
+      toinsert[toinsert.length - 1].childNodes[1].setAttribute(script_attrs[i].name, script_attrs[i].value);
+    }
+    // store reference to server id on output_area
+    output_area._bokeh_server_id = output.metadata[EXEC_MIME_TYPE]["server_id"];
+  }
+}
+
+/**
+ * Handle when an output is cleared or removed
+ */
+function handle_clear_output(event, handle) {
+  var id = handle.cell.output_area._hv_plot_id;
+  var server_id = handle.cell.output_area._bokeh_server_id;
+  if (((id === undefined) || !(id in PyViz.plot_index)) && (server_id !== undefined)) { return; }
+  var comm = window.PyViz.comm_manager.get_client_comm("hv-extension-comm", "hv-extension-comm", function () {});
+  if (server_id !== null) {
+    comm.send({event_type: 'server_delete', 'id': server_id});
+    return;
+  } else if (comm !== null) {
+    comm.send({event_type: 'delete', 'id': id});
+  }
+  delete PyViz.plot_index[id];
+  if ((window.Bokeh !== undefined) & (id in window.Bokeh.index)) {
+    var doc = window.Bokeh.index[id].model.document
+    doc.clear();
+    const i = window.Bokeh.documents.indexOf(doc);
+    if (i > -1) {
+      window.Bokeh.documents.splice(i, 1);
+    }
+  }
+}
+
+/**
+ * Handle kernel restart event
+ */
+function handle_kernel_cleanup(event, handle) {
+  delete PyViz.comms["hv-extension-comm"];
+  window.PyViz.plot_index = {}
+}
+
+/**
+ * Handle update_display_data messages
+ */
+function handle_update_output(event, handle) {
+  handle_clear_output(event, {cell: {output_area: handle.output_area}})
+  handle_add_output(event, handle)
+}
+
+function register_renderer(events, OutputArea) {
+  function append_mime(data, metadata, element) {
+    // create a DOM node to render to
+    var toinsert = this.create_output_subarea(
+    metadata,
+    CLASS_NAME,
+    EXEC_MIME_TYPE
+    );
+    this.keyboard_manager.register_events(toinsert);
+    // Render to node
+    var props = {data: data, metadata: metadata[EXEC_MIME_TYPE]};
+    render(props, toinsert[0]);
+    element.append(toinsert);
+    return toinsert
+  }
+
+  events.on('output_added.OutputArea', handle_add_output);
+  events.on('output_updated.OutputArea', handle_update_output);
+  events.on('clear_output.CodeCell', handle_clear_output);
+  events.on('delete.Cell', handle_clear_output);
+  events.on('kernel_ready.Kernel', handle_kernel_cleanup);
+
+  OutputArea.prototype.register_mime_type(EXEC_MIME_TYPE, append_mime, {
+    safe: true,
+    index: 0
+  });
+}
+
+if (window.Jupyter !== undefined) {
+  try {
+    var events = require('base/js/events');
+    var OutputArea = require('notebook/js/outputarea').OutputArea;
+    if (OutputArea.prototype.mime_types().indexOf(EXEC_MIME_TYPE) == -1) {
+      register_renderer(events, OutputArea);
+    }
+  } catch(err) {
+  }
+}
+
+</script>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The <code>SVG</code> pane embeds an <code>.svg</code> image file in a panel if provided a local path, or will link to a remote image if provided a URL.</p>
+<h4 id="Parameters:">Parameters:<a class="anchor-link" href="#Parameters:">¶</a></h4><p>For layout and styling related parameters see the <a href="../../user_guide/Customization.html">customization user guide</a>.</p>
+<ul>
+<li><strong><code>alt_text</code></strong> (str, default=None): alt text to add to the image tag. The alt text is shown when a user cannot load or display the image. </li>
+<li><strong><code>embed</code></strong> (boolean, default=False): If given a URL to an image this determines whether the image will be embedded as base64 or merely linked to.</li>
+<li><strong><code>link_url</code></strong> (str, default=None): A link URL to make the image clickable and link to some other website.</li>
+<li><strong><code>encode</code></strong> (bool, default=False): Whether to base64 encode the SVG, when enabled SVG links may not work.</li>
+<li><strong><code>object</code></strong> (str or object): The svg file to display. Can be a string pointing to a local or remote file, or an object with a <code>_repr_svg_</code> method.</li>
+<li><strong><code>style</code></strong> (dict): Dictionary specifying CSS styles</li>
+</ul>
+<hr/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The <code>SVG</code> pane can be pointed at any local or remote <code>.svg</code> file. If given a URL starting with <code>http</code> or <code>https</code>, the <code>embed</code> parameter determines whether the image will be embedded or linked to:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [2]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">svg_pane</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">pane</span><span class="o">.</span><span class="n">SVG</span><span class="p">(</span><span class="s1">'https://upload.wikimedia.org/wikipedia/commons/6/6b/Bitmap_VS_SVG.svg'</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+
+<span class="n">svg_pane</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[2]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div id="1001">
+<div class="bk-root" data-root-id="1001" id="c0f0a783-a2d8-4d6d-a496-9d741a007346"></div>
+</div>
+<script type="application/javascript">(function(root) {
+  function embed_document(root) {
+    var docs_json = {"6cc093e7-8c12-48cc-9067-25672ad78d36":{"roots":{"references":[{"attributes":{"height":200,"margin":[5,5,5,5],"name":"SVG02859","sizing_mode":"fixed","text":"&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;\n&lt;!-- Generator: Adobe Illustrator 24.3.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --&gt;\n&lt;svg version=&quot;1.1&quot; id=&quot;Layer_1&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; x=&quot;0px&quot; y=&quot;0px&quot;\n\t viewBox=&quot;0 0 1642.7 1028.2&quot; style=&quot;enable-background:new 0 0 1642.7 1028.2;&quot; xml:space=&quot;preserve&quot;&gt;\n&lt;style type=&quot;text/css&quot;&gt;\n\t.st0{fill:#DFDFDF;}\n\t.st1{fill:url(#SVGID_1_);}\n\t.st2{fill:#000055;}\n\t.st3{fill:url(#SVGID_2_);}\n\t.st4{fill:#999999;}\n\t.st5{fill:#555555;}\n\t.st6{font-family:&#x27;Gotham-Bold&#x27;;}\n\t.st7{font-size:184.6154px;}\n\t.st8{fill:#333388;}\n\t.st9{font-family:&#x27;Gotham-Light&#x27;;}\n\t.st10{font-size:73.8462px;}\n&lt;/style&gt;\n&lt;font horiz-adv-x=&quot;1000&quot;&gt;\r\n&lt;!-- HTF Gotham&amp;#xAA; Copr. 2000 The Hoefler Type Foundry, Inc. Info: www.typography.com --&gt;\r\n&lt;!-- Copyright: Copyright 2020 Adobe System Incorporated. All rights reserved. --&gt;\r\n&lt;font-face font-family=&quot;Gotham-Bold&quot; units-per-em=&quot;1000&quot; underline-position=&quot;-133&quot; underline-thickness=&quot;20&quot;/&gt;\r\n&lt;missing-glyph horiz-adv-x=&quot;500&quot;/&gt;\r\n&lt;glyph unicode=&quot;R&quot; horiz-adv-x=&quot;723&quot; d=&quot;M689,0l-171,250C607,283 668,354 668,467l0,2C668,613 569,700 404,700l-320,0l0,-700l154,0l0,224l121,0l150,-224M512,459C512,400 469,360 394,360l-156,0l0,201l153,0C466,561 512,527 512,461z&quot;/&gt;\r\n&lt;glyph unicode=&quot;V&quot; horiz-adv-x=&quot;750&quot; d=&quot;M726,700l-166,0l-183,-493l-183,493l-170,0l283,-705l136,0z&quot;/&gt;\r\n&lt;glyph unicode=&quot;a&quot; horiz-adv-x=&quot;592&quot; d=&quot;M529,0l0,311C529,456 456,542 290,542C199,542 141,525 82,499l38,-116C169,401 210,412 268,412C344,412 383,377 383,314l0,-9C345,318 306,327 252,327C125,327 36,273 36,156l0,-2C36,48 119,-10 220,-10C294,-10 345,17 382,58l0,-58M385,189C385,134 337,95 266,95C217,95 183,119 183,160l0,2C183,210 223,236 288,236C325,236 359,228 385,216z&quot;/&gt;\r\n&lt;glyph unicode=&quot;c&quot; horiz-adv-x=&quot;571&quot; d=&quot;M540,86l-89,90C414,141 379,119 328,119C245,119 192,185 192,267l0,2C192,348 246,415 322,415C376,415 410,392 444,356l93,100C487,512 424,546 323,546C159,546 42,420 42,267l0,-2C42,112 160,-12 321,-12C428,-12 488,29 540,86z&quot;/&gt;\r\n&lt;glyph unicode=&quot;e&quot; horiz-adv-x=&quot;613&quot; d=&quot;M568,253l0,2C568,407 486,546 307,546C151,546 42,420 42,267l0,-2C42,101 161,-12 322,-12C419,-12 491,26 541,88l-87,77C412,126 375,110 324,110C256,110 208,146 193,215l373,0C567,229 568,238 568,253M420,310l-229,0C203,379 244,424 307,424C371,424 411,378 420,310z&quot;/&gt;\r\n&lt;glyph unicode=&quot;o&quot; horiz-adv-x=&quot;664&quot; d=&quot;M622,267l0,2C622,423 499,546 333,546C166,546 42,421 42,267l0,-2C42,111 165,-12 331,-12C498,-12 622,113 622,267M472,265C472,186 420,119 333,119C249,119 192,188 192,267l0,2C192,348 244,415 331,415C415,415 472,346 472,267z&quot;/&gt;\r\n&lt;glyph unicode=&quot;r&quot; horiz-adv-x=&quot;418&quot; d=&quot;M391,387l0,159C301,550 251,502 220,428l0,108l-152,0l0,-536l152,0l0,198C220,326 282,387 383,387z&quot;/&gt;\r\n&lt;glyph unicode=&quot;s&quot; horiz-adv-x=&quot;502&quot; d=&quot;M461,163l0,2C461,263 374,299 299,324C241,344 190,358 190,388l0,2C190,411 209,427 246,427C285,427 338,408 391,377l58,105C391,521 317,544 249,544C141,544 53,483 53,374l0,-2C53,268 138,233 213,211C272,193 324,182 324,149l0,-2C324,123 304,107 260,107C210,107 149,129 91,171l-65,-100C97,15 181,-10 256,-10C372,-10 461,44 461,163z&quot;/&gt;\r\n&lt;glyph unicode=&quot;t&quot; horiz-adv-x=&quot;415&quot; d=&quot;M369,22l0,122C347,132 322,125 294,125C260,125 245,142 245,177l0,229l126,0l0,130l-126,0l0,137l-152,0l0,-137l-64,0l0,-130l64,0l0,-254C93,28 156,-9 249,-9C300,-9 337,3 369,22z&quot;/&gt;\r\n&lt;/font&gt;\r\n\n\t&lt;font horiz-adv-x=&quot;1000&quot;&gt;\r\n&lt;!-- HTF Gotham&amp;#xAA; Copr. 2000 The Hoefler Type Foundry, Inc. Info: www.typography.com --&gt;\r\n&lt;!-- Copyright: Copyright 2020 Adobe System Incorporated. All rights reserved. --&gt;\r\n&lt;font-face font-family=&quot;Gotham-Light&quot; units-per-em=&quot;1000&quot; underline-position=&quot;-133&quot; underline-thickness=&quot;20&quot;/&gt;\r\n&lt;missing-glyph horiz-adv-x=&quot;500&quot;/&gt;\r\n&lt;glyph unicode=&quot;E&quot; horiz-adv-x=&quot;670&quot; d=&quot;M607,0l0,48l-451,0l0,281l401,0l0,48l-401,0l0,275l446,0l0,48l-498,0l0,-700z&quot;/&gt;\r\n&lt;glyph unicode=&quot;F&quot; horiz-adv-x=&quot;656&quot; d=&quot;M597,652l0,48l-493,0l0,-700l52,0l0,317l396,0l0,48l-396,0l0,287z&quot;/&gt;\r\n&lt;glyph unicode=&quot;G&quot; horiz-adv-x=&quot;784&quot; d=&quot;M700,93l0,270l-284,0l0,-48l234,0l0,-201C599,71 516,34 427,34C240,34 127,169 127,350l0,2C127,521 246,665 416,665C522,665 586,629 641,581l34,39C605,678 533,712 419,712C210,712 73,539 73,350l0,-2C73,151 204,-12 425,-12C539,-12 637,37 700,93z&quot;/&gt;\r\n&lt;glyph unicode=&quot;I&quot; horiz-adv-x=&quot;274&quot; d=&quot;M163,0l0,700l-52,0l0,-700z&quot;/&gt;\r\n&lt;glyph unicode=&quot;J&quot; horiz-adv-x=&quot;549&quot; d=&quot;M456,228l0,472l-52,0l0,-476C404,102 338,37 252,37C170,37 123,75 80,148l-43,-27C80,44 145,-10 249,-10C365,-10 456,71 456,228z&quot;/&gt;\r\n&lt;glyph unicode=&quot;N&quot; horiz-adv-x=&quot;790&quot; d=&quot;M686,0l0,700l-50,0l0,-609l-483,609l-49,0l0,-700l50,0l0,622l493,-622z&quot;/&gt;\r\n&lt;glyph unicode=&quot;P&quot; horiz-adv-x=&quot;668&quot; d=&quot;M618,484l0,2C618,621 512,700 358,700l-254,0l0,-700l52,0l0,261l189,0C491,261 618,337 618,484M566,481C566,377 478,309 348,309l-192,0l0,343l198,0C480,652 566,594 566,483z&quot;/&gt;\r\n&lt;glyph unicode=&quot;S&quot; horiz-adv-x=&quot;640&quot; d=&quot;M573,181l0,2C573,285 505,343 343,376C177,410 139,455 139,529l0,2C139,604 207,663 310,663C387,663 453,641 519,584l33,41C481,682 414,710 312,710C182,710 87,630 87,526l0,-2C87,418 155,361 323,327C482,295 521,252 521,178l0,-2C521,96 449,37 344,37C241,37 170,70 93,141l-34,-39C143,27 229,-10 341,-10C476,-10 573,68 573,181z&quot;/&gt;\r\n&lt;glyph unicode=&quot;V&quot; horiz-adv-x=&quot;750&quot; d=&quot;M706,700l-55,0l-275,-644l-274,644l-58,0l308,-705l46,0z&quot;/&gt;\r\n&lt;glyph unicode=&quot;,&quot; horiz-adv-x=&quot;230&quot; d=&quot;M53,-82l12,-25C125,-84 148,-51 148,11l0,74l-66,0l0,-85l27,0C112,-38 96,-60 53,-82z&quot;/&gt;\r\n&lt;glyph unicode=&quot; &quot; horiz-adv-x=&quot;300&quot;/&gt;\r\n&lt;/font&gt;\r\n\n\t&lt;g&gt;\n\t&lt;path class=&quot;st0&quot; d=&quot;M758,28.4v701.2c0,14.3-11.6,25.8-26,25.8H26c-14.4,0-26-11.5-26-25.8V28.4C0,14.2,11.6,2.6,26,2.6h706\n\t\tC746.4,2.6,758,14.1,758,28.4z&quot;/&gt;\n\t&lt;path class=&quot;st0&quot; d=&quot;M910.7,2.6h706c14.4,0,26,11.5,26,25.8v701.2c0,14.3-11.6,25.8-26,25.8h-706c-14.4,0-26-11.5-26-25.8V28.4\n\t\tC884.7,14.1,896.3,2.6,910.7,2.6z&quot;/&gt;\n&lt;/g&gt;\n&lt;linearGradient id=&quot;SVGID_1_&quot; gradientUnits=&quot;userSpaceOnUse&quot; x1=&quot;620.5872&quot; y1=&quot;169.4297&quot; x2=&quot;293.6531&quot; y2=&quot;425.9471&quot; gradientTransform=&quot;matrix(1.8462 0 0 1.8462 348.5519 -42.0199)&quot;&gt;\n\t&lt;stop  offset=&quot;0&quot; style=&quot;stop-color:#3333FF&quot;/&gt;\n\t&lt;stop  offset=&quot;1&quot; style=&quot;stop-color:#3F3FFF;stop-opacity:0&quot;/&gt;\n&lt;/linearGradient&gt;\n&lt;path class=&quot;st1&quot; d=&quot;M1599.3,432c-22.2,212.3-222.4,223.3-652.5,225.1c-48.8,0-44.4-89.4-2.5-89.4c103.8,0,250.5-188.9,250.6-393.1\n\tC1194.8,269.4,1596.1,306.4,1599.3,432z&quot;/&gt;\n&lt;g transform=&quot;matrix(.17 0 0 .17 392 313)&quot;&gt;\n\t&lt;path id=&quot;VectorLarge_1_&quot; class=&quot;st2&quot; d=&quot;M3063.6,1988.3v-115l42.4,0.6c1.2,38.1,13.4,66.9,36,85.7c23.2,18.2,58.6,27.6,105.7,27.6\n\t\tc44.1,0,77.2-7.6,100.5-23.5c23.2-15.8,34.8-39.3,34.8-69.8c0-24.1-7-42.8-20.9-56.3c-13.9-12.9-43-25.8-88.3-38.1l-73.2-20\n\t\tc-52.8-14.7-90-32.9-112.1-55.2c-21.5-21.7-32.5-52.2-32.5-89.8c0-42.8,16.8-76.3,49.9-99.8c33.1-23.5,80.1-35.8,140.5-35.8\n\t\tc25.6,0,54,2.3,84.8,7.6c30.8,4.7,63.3,12.3,98.1,22.3v108h-41.8c-4.1-35.8-17.4-61.6-39.5-77.5c-21.5-15.8-55.2-24.1-99.9-24.1\n\t\tc-38.9,0-68.5,7.6-89.4,22.3c-20.3,14.7-30.2,35.8-30.2,63.4c0,24.1,7.5,42.8,23.2,56.9c15.1,13.5,47.6,27.6,97.6,41.1l68.5,18.8\n\t\tc49.9,13.5,85.9,31.1,107.4,52.8c21.5,21.1,32.5,49.9,32.5,85.7c0,48.7-17.4,86.3-51.7,110.9c-34.3,24.6-85.4,37-153.3,37\n\t\tc-30.2,0-61.6-2.9-92.9-8.2c-32.5-5.3-63.9-12.9-96.4-24.1L3063.6,1988.3z&quot;/&gt;\n&lt;/g&gt;\n&lt;path id=&quot;VectorLarge&quot; class=&quot;st2&quot; d=&quot;M1201.8,523.9V408.5l43.2,0.3c1.3,38.4,13.5,67,36.7,85.7c23.4,18.3,59.3,27.5,106.9,27.5\n\tc44.5,0,78.5-7.9,101.7-23.8c23.4-16.1,35.3-39.3,35.3-70c0-24.4-7.1-43.2-21.4-56.3c-14-13.1-43.8-25.8-89.4-38.4l-74-20.1\n\tc-53.5-14.7-91.4-33-113.4-55c-21.8-22-32.7-52.1-32.7-90.3c0-43,16.9-76.4,50.6-100.2c33.8-23.8,81.2-35.6,142.3-35.6\n\tc26,0,54.6,2.6,85.7,7.8c31,5,64.1,12.3,99.1,22.2v108H1530c-4.2-35.8-17.5-61.7-39.9-77.4c-22-16.1-55.8-24.2-101-24.2\n\tc-39.5,0-69.6,7.4-90.5,22.2c-20.5,14.5-30.8,35.6-30.8,63.5c0,24.2,7.8,43.2,23.3,57s48.4,27.5,98.8,41.2l69.4,18.6\n\tc50.8,13.8,87,31.4,108.6,53c21.8,21.2,32.7,49.8,32.7,85.8c0,49.1-17.4,86.2-52.2,111.1s-86.6,37.3-155.4,37.3\n\tc-30.8,0-62.2-2.8-94.2-8.5c-33.2-5.5-64.6-12.9-97.8-24L1201.8,523.9z&quot;/&gt;\n&lt;linearGradient id=&quot;SVGID_2_&quot; gradientUnits=&quot;userSpaceOnUse&quot; x1=&quot;95.1824&quot; y1=&quot;187.99&quot; x2=&quot;-218.8544&quot; y2=&quot;425.5044&quot; gradientTransform=&quot;matrix(1.8462 0 0 1.8462 348.5519 -45.823)&quot;&gt;\n\t&lt;stop  offset=&quot;0&quot; style=&quot;stop-color:#333333&quot;/&gt;\n\t&lt;stop  offset=&quot;1&quot; style=&quot;stop-color:#FFFFFF;stop-opacity:0&quot;/&gt;\n&lt;/linearGradient&gt;\n&lt;path class=&quot;st3&quot; d=&quot;M652.3,552.3l-575,104.6L37.7,567l288.2-463.6l100.4,118.2l226,141.8V552.3z&quot;/&gt;\n&lt;g transform=&quot;matrix(.173 0 0 .173 -8.25 314)&quot;&gt;\n\t&lt;g id=&quot;RasterLarge_1_&quot; transform=&quot;matrix(1.36 0 0 1.28 -161 -636)&quot;&gt;\n\t\t&lt;path class=&quot;st4&quot; d=&quot;M313.6,2026.3H263v-110.7h33.7v36.9h16.9v18.5h16.9v18.5h33.7v18.5h67.5v-18.5h33.7v-36.9h16.9v-36.9h-16.9\n\t\t\tv-18.5h-16.9v-18.5h-67.5v-18.5h-50.6v-17.9h-33.7v-18.5h-16.9v-18.5H263v-110.7h16.9v-18.5h16.9v-18.5h16.9v-18.5h151.3v18.5\n\t\t\th50.6v110.7h-33.7v-18.5h-16.9v-36.9h-16.9v-18.5h-33.7v-18.5h-50.6v18.5H330v18.5h-16.9v36.9H330v36.9h50.6v18.5h50.6v18.5h50.6\n\t\t\tv18.5h16.9v18.5h16.9v18.5h16.9V1990h-16.9v18.5h-16.9v18.5h-16.9v18.5H313.6C313.6,2045.4,313.6,2026.3,313.6,2026.3z&quot;/&gt;\n\t\t&lt;path class=&quot;st5&quot; d=&quot;M330.5,2026.3h-50.6v-18.5H263v-92.3h33.7v36.9h16.9v36.9h16.9h16.9v18.5h101.2v-18.5h16.9V1971h16.9v-73.8\n\t\t\th-33.7v-18.5h-33.7v-18.5h-67.5v-17.9h-33.7v-18.5h-33.7V1787H263v-92.3h16.9v-18.5h16.9v-18.5h33.7v-18.5h118.1v18.5h50.6v18.5\n\t\t\th16.9v92.3h-33.7v-36.9h-16.9v-36.9h-33.7v-18.5h-84.3v18.5h-16.9v18.5h-16.9v55.4h16.9v18.5h33.7v18.5h50.6v18.5h50.6v18.5h33.7\n\t\t\tv18.5h16.9v18.5H533v92.3h-16.9v36.9h-16.9v18.5h-33.7v18.5h-135V2026.3z&quot;/&gt;\n\t\t&lt;path d=&quot;M347.4,2026.3h-50.6v-18.5H263v-92.3h33.7v55.4h16.9v18.5h16.9v18.5h118.1v-18.5h33.7v-92.3h-16.9v-18.5h-33.7v-18.5\n\t\t\th-67.5v-17.9h-50.6v-18.5h-16.9v-18.5h-16.9v-36.9H263v-55.4h16.9v-36.9h33.7v-18.5h33.7v-18.5h84.3v18.5h50.6v18.5h33.7v92.3\n\t\t\th-33.7v-55.4h-16.9v-18.5h-16.9v-18.5H330.5v18.5h-16.9v73.8h16.9v18.5h16.9v18.5H398v18.5h67.5v18.5h33.7v18.5h16.9v36.9H533\n\t\t\tv73.8h-16.9v36.9h-33.7v18.5h-50.6v18.5h-84.3C347.4,2045.4,347.4,2026.3,347.4,2026.3z&quot;/&gt;\n\t&lt;/g&gt;\n&lt;/g&gt;\n&lt;g id=&quot;RasterLarge&quot; transform=&quot;matrix(1.36 0 0 1.28 -161 -636)&quot;&gt;\n\t&lt;path class=&quot;st4&quot; d=&quot;M413.4,909.9H358V799.2h36.9v36.9h18.5v18.5h18.5V873h36.9v18.5h73.8V873h36.9v-36.9H598v-36.9h-18.5v-18.5\n\t\tH561v-18.5h-73.8v-18.5h-55.4v-18.5h-36.9v-18.5h-18.5v-18.5H358V577.6h18.5v-18.5H395v-18.5h18.5v-18.5h166.2v18.5h55.4v110.8H598\n\t\tV633h-18.5v-36.9H561v-18.5h-36.9v-18.5h-55.4v18.5h-36.9v18.5h-18.5V633h18.5v36.9h55.4v18.5h55.4v18.5H598v18.5h18.5v18.5H635\n\t\tv18.5h18.5V873H635v18.5h-18.5V910H598v18.5H413.4V909.9z&quot;/&gt;\n\t&lt;path class=&quot;st5&quot; d=&quot;M431.8,909.9h-55.4v-18.5H358v-92.3h36.9V836h18.5v37h18.5h18.5v18.5h110.8V873h18.5v-18.5H598v-73.8h-36.9\n\t\tv-18.5h-36.9v-18.5h-73.8v-18.5h-36.9v-18.5h-36.9v-36.9H358v-92.3h18.5V559H395v-18.5h36.9V522h129.2v18.5h55.4V559H635v92.3h-37\n\t\tv-36.9h-18.5v-36.9h-36.9V559h-92.3v18.5h-18.5V596h-18.5v55.4h18.5v18.5h36.9v18.5h55.4v18.5h55.4v18.5h36.9v18.5h18.5v18.5h18.5\n\t\tv92.3h-18.5v36.9h-18.5v18.5h-36.9v18.5H431.8V909.9z&quot;/&gt;\n\t&lt;path d=&quot;M450.3,909.9h-55.4v-18.5H358v-92.3h36.9v55.4h18.5V873h18.5v18.5h129.2V873H598v-92.3h-18.5v-18.5h-36.9v-18.5h-73.8\n\t\tv-18.5h-55.4v-18.5h-18.5v-18.5h-18.5v-36.9H358v-55.4h18.5V559h36.9v-18.5h36.9V522h92.3v18.5H598V559h36.9v92.3H598v-55.4h-18.5\n\t\tv-18.5H561v-18.5H431.8v18.5h-18.5v73.8h18.5v18.5h18.5v18.5h55.4v18.5h73.8v18.5h36.9v18.5h18.5v36.9h18.5v73.8h-18.5v36.9H598\n\t\tv18.5h-55.4v18.5h-92.3V909.9z&quot;/&gt;\n&lt;/g&gt;\n&lt;g&gt;\n\t&lt;g&gt;\n\t\t&lt;text transform=&quot;matrix(1 0 0 1 75.5747 924.4639)&quot; class=&quot;st6 st7&quot;&gt;Raster&lt;/text&gt;\n\t\t&lt;text transform=&quot;matrix(1 0 0 1 945.9044 924.4639)&quot; class=&quot;st8 st6 st7&quot;&gt;Vector&lt;/text&gt;\n\t&lt;/g&gt;\n\t&lt;text transform=&quot;matrix(1 0 0 1 83.5525 1020.3053)&quot; class=&quot;st9 st10&quot;&gt;JPEG, GIF, PNG&lt;/text&gt;\n\t&lt;text transform=&quot;matrix(1 0 0 1 1203.7488 1020.3053)&quot; class=&quot;st8 st9 st10&quot;&gt;SVG&lt;/text&gt;\n&lt;/g&gt;\n&lt;/svg&gt;\n","width":300},"id":"1001","type":"panel.models.markup.HTML"}],"root_ids":["1001"]},"title":"Bokeh Application","version":"2.2.3"}};
+    var render_items = [{"docid":"6cc093e7-8c12-48cc-9067-25672ad78d36","root_ids":["1001"],"roots":{"1001":"c0f0a783-a2d8-4d6d-a496-9d741a007346"}}];
+    root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
+  }
+  if (root.Bokeh !== undefined && root.Bokeh.Panel !== undefined) {
+    embed_document(root);
+  } else {
+    var attempts = 0;
+    var timer = setInterval(function(root) {
+      if (root.Bokeh !== undefined && root.Bokeh.Panel !== undefined) {
+        clearInterval(timer);
+        embed_document(root);
+      } else if (document.readyState == "complete") {
+        attempts++;
+        if (attempts > 100) {
+          clearInterval(timer);
+          console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+        }
+      }
+    }, 10, root)
+  }
+})(window);</script>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Like any other pane, the <code>SVG</code> pane can be updated by setting the <code>object</code> parameter:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [3]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">svg_pane</span><span class="o">.</span><span class="n">object</span> <span class="o">=</span> <span class="s1">'https://upload.wikimedia.org/wikipedia/commons/1/1a/SVG_example_markup_grid.svg'</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils">
+<p><a class="reference external" href="https://raw.githubusercontent.com/pyviz/panel/master/examples/reference/panes/SVG.ipynb">Download this notebook from GitHub (right-click to download).</a></p>
+</hr></div>
+</div>
+</div>
+<!-- END MAIN BODY OF DOCS ––––––––––––– -->
+<!-- Google Analytics -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-154795830-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-154795830-2');
+</script>
+<!-- MathJax Config -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>
